@@ -1,0 +1,162 @@
+.gridPanel {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.formPanel {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.action-bar .btn {
+  float: right;
+  min-width: 120px;
+  margin-left: 10px;
+}
+
+.action-bar::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+body, label, .checkbox label {
+  font-weight: 300;
+}
+
+.checkbox label {
+  padding-left: 0 !important;
+}
+
+.icheckbox_square-blue {
+  margin-right: 5px;
+}
+
+.icheckbox_square-blue.focus {
+  outline: 1px dotted #3C8DBC;
+  outline-offset: 2px;
+}
+
+.btn i {
+  margin-right: 13px;
+  vertical-align: middle;
+  top: -2px;
+}
+
+.icon-placeholder {
+  padding-left: 27px;
+}
+
+.sidebar-menu>li.header {
+  text-transform: uppercase;
+}
+
+.sidebar-menu > li.active > a {
+  font-weight: 400;
+}
+
+/* Error list for form validation */
+.alert-validation {
+  font-weight: bold;
+}
+
+#toast-container > div {
+  opacity: 1;
+  -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+  filter: alpha(opacity=100);
+  text-align: center;
+  font-size: 18px;
+  padding: 20px;
+  margin: 0;
+  width: 100% !important;
+}
+
+#toast-container li {
+  list-style: none;
+}
+
+/*------------*/
+/* DataTables */
+/*------------*/
+
+.dataTable {
+  table-layout: fixed;
+  display: none; /* shown when loaded */
+}
+
+.dataTables_wrapper .pagination .disabled.next,
+.dataTables_wrapper .pagination .disabled.previous {
+  display: none;
+}
+
+/* Responsive layout support */
+
+.dataTable.collapsed {
+  table-layout: auto;
+}
+
+.dataTable .c {
+  cursor: pointer;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dataTable.collapsed .c {
+  white-space: normal;
+}
+
+.dataTables_wrapper {
+  overflow: hidden;
+}
+
+/* Customize table header icons */
+
+table.dataTable thead .sorting::after {
+  font-family:'FontAwesome';
+  top: 0;
+  bottom: 0;
+  line-height: 35px !important;
+  opacity: 0.35;
+  content: '\f0dc';
+}
+table.dataTable thead .sorting_asc::after {
+  font-family:'FontAwesome';
+  top: 0;
+  bottom: 0;
+  line-height: 35px !important;
+  opacity: 0.35;
+  content: '\f0dc';
+  content: '\f0de';
+}
+table.dataTable thead .sorting_desc::after {
+  font-family:'FontAwesome';
+  top: 0;
+  bottom: 0;
+  line-height: 35px !important;
+  opacity: 0.35;
+  content: '\f0dc';
+  content: '\f0dd';
+}
+table.dataTable thead .sorting_asc_disabled::after {
+  font-family:'FontAwesome';
+  top: 0;
+  bottom: 0;
+  line-height: 35px !important;
+  opacity: 0.35;
+  content: '\f0dc';
+  content: '\f0de';
+  opacity: 0.2;
+}
+table.dataTable thead .sorting_desc_disabled::after {
+  font-family:'FontAwesome';
+  top: 0;
+  bottom: 0;
+  line-height: 35px !important;
+  opacity: 0.35;
+  content: '\f0dc';
+  content: '\f0dd';
+  opacity: 0.2;
+}
