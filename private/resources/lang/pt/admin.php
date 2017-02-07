@@ -42,4 +42,7 @@ return [
   'WELCOME_1' => 'Bem-vindo à Aplicação',
   'WELCOME_2' => 'Use o menu à esquerda para navegar.',
 
+  // Gestao de albumns
+  'GESTAO_ALBUMS' => 'Gestão de Albums',
+
 ];

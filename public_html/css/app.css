@@ -160,3 +160,9 @@ table.dataTable thead .sorting_desc_disabled::after {
   content: '\f0dd';
   opacity: 0.2;
 }
+.albumBox {
+  padding: 20px 0;
+}
+.albumCover img {
+  width: 100%;
+}

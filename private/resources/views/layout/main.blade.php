@@ -1,7 +1,7 @@
 @extends ('layout.master')
 
 @section ('head')
-  <link href="lib/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet" type="text/css">
+  <link href="./lib/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet" type="text/css">
   <link href="lib/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet" type="text/css">
   <link href="lib/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet" type="text/css">
   <link href="lib/adminlte/plugins/iCheck/square/blue.css" rel="stylesheet">
@@ -42,6 +42,7 @@
   </script>
 
   <script src='js/app.js'></script>
+  <script src='js/main.js'></script>
 @stop
 
 @section ('body')

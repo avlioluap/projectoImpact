@@ -1,7 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 use Response;
-use App\Models\Artista as Artista;
+
 
 class WelcomeController extends Controller
 {
@@ -32,7 +32,7 @@ class WelcomeController extends Controller
    */
   public function index ()
   {
-dd(Artista::all());
+
     return view ('welcome');
   }
 

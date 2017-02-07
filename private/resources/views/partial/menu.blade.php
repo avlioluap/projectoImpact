@@ -8,4 +8,9 @@
   <li class="{{ Util::activeIfRouteTagged('users') }}">
     <a href="{{ URL::route('users') }}"><i class="glyphicon glyphicon-user"></i> @lang('admin.USER_MANAGEMENT')</a>
   </li>
+  <li class="{{ Util::activeIfRouteTagged('albums') }}">
+    <a href="{{ URL::to('albums/list') }}">
+      <i class="glyphicon glyphicon-fire"></i> @lang('admin.GESTAO_ALBUMS')
+    </a>
+  </li>
 </ul>
