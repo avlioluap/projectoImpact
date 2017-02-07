@@ -45,7 +45,7 @@
                     <img src="{{ $album->cover }}" alt="nome do album">
                   </div>
                   <div class="albumViewInfo">
-                    <a href="#" class="btn btn-danger btn-flat">Ver info</a>
+                    <a href="{{ URL::to("albums/show/$album->id") }}" class="btn btn-danger btn-flat">Ver info</a>
                   </div>
               </div>
             @endforeach

@@ -35,10 +35,10 @@ Route::group(['prefix' => 'albums'], function () {
   Route::get ('list', ['as' => 'albums.list', 'tag' => 'albums', 'uses' => 'AlbumsController@albums']);
   //form de criação de uma nova entrada de albums
   Route::get('create', ['as' => 'albums.create', 'tag' => 'albums', 'uses' => 'AlbumsController@create']);
-
   //ajax request para a criação de um novo albums devolve json
   Route::get('insert', ['as' => 'albums.insert', 'tag' => 'albums', 'uses' => 'AlbumsController@store']);
-
+  //view de um album para ver dados
+  Route::get('show/{id}', ['as' => 'albums.show', 'tag' => 'albums', 'uses' => 'AlbumsController@show']);
 });
 
 //Route::get ('albums.list', ['as' => 'albums', 'tag' => 'albums', 'uses' => 'AlbumsController@albums']);

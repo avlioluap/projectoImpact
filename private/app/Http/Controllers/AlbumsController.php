@@ -66,6 +66,8 @@ class AlbumsController extends Controller {
 	public function show($id)
 	{
 		//
+		$album = Album::where('id', $id)->first();
+		dd($album);
 	}
 
 	/**
