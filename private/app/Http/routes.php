@@ -33,6 +33,8 @@ Route::group (['tag' => 'users'], function () {
 Route::group(['prefix' => 'albums'], function () {
   //listagem de album do user
   Route::get ('list', ['as' => 'albums.list', 'tag' => 'albums', 'uses' => 'AlbumsController@albums']);
+  //search de album no catologo do user
+  Route::get('search', ['as' => 'albums.search', 'tag' => 'albums', 'uses' => 'AlbumsController@search']);
   //form de criação de uma nova entrada de albums
   Route::get('create', ['as' => 'albums.create', 'tag' => 'albums', 'uses' => 'AlbumsController@create']);
   //ajax request para a criação de um novo albums devolve json

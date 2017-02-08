@@ -11,29 +11,41 @@
     <form id="inserirNovoAlbum" action="albums/insert">
 
       <div class="form-group">
-        <label for="artista"><h3>Nome do artista</h3></label>
-        <input type="text" class="form-control" id="artista" name="artista" placeholder="Inserir nome do artista">
-        <a id="procArtista" class="btn btn-primary">Procurar artista</a>
+        <label for="artistaProc"><h3>Nome do artista</h3></label>
+        <div class="row">
+          <div class="col-lg-8">
+            <input type="text" class="form-control" id="artistaProc" name="artistaProc" placeholder="Inserir nome do artista">
+            <input type="hidden" class="form-control" id="artista" name="artista" placeholder="nome do artista escolhido">
+          </div>
+          <div class="col-lg-4">
+            <a id="procArtistaBtn" class="btn btn-primary">Procurar artista</a>
+          </div>
+        </div>
       </div>
 
+      <!-- list de escolhas de artistas dados pela api -->
+      <div class="form-group">
+        <div id="artistImgBlocks"></div>
+      </div>
+
+      <!-- escolha do album consoante a escolha anterior -->
       <div id="albumInput" class="form-group">
           <label for="nome"><h3>Nome do album</h3></label>
-          <input type="text" class="form-control" id="nome" name="nome" placeholder="Inserir nome do album">
-          <a id="procAlbum" class="btn btn-primary">Procurar album</a>
+          <div class="row">
+            <div class="col-lg-8">
+              <input type="text" class="form-control" id="nome" name="nome" placeholder="Inserir nome do album">
+              <input type="hidden" class="form-control" id="cover" name="cover" placeholder="cover do album">
+            </div>
+            <div class="col-lg-4">
+              <a id="procAlbum" class="btn btn-primary">Procurar album</a>
+            </div>
+          </div>
       </div>
 
-      <!-- dislay capa do album -->
-      <div  class="albumCover">
-        <img id="albumCover" src="" alt="">
-      </div>
-
-      <!-- tags para o album -->
-      <div id="ablumTags" class="albumTags">
-
-        <input type="text" class="form-control" id="tag" name="tag" placeholder="tags do album">
-        <input type="text" class="form-control" id="ano" name="ano" placeholder="ano do album">
-        <input type="text" class="form-control" id="url_api" name="url_api" placeholder="url_api do album">
-        <input type="text" class="form-control" id="cover" name="cover" placeholder="cover do album">
+      <!-- escolha da capa do album consoante as escolhas da api -->
+      <div class="form-group row">
+        <div id="albumImgBlocks" class="col-lg-4"></div>
+        <div id="ablumTags" class="albumTags" class="col-lg-8"></div>
       </div>
 
       <!-- inserir novo album -->

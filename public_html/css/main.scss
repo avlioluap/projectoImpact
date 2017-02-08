@@ -1,5 +1,69 @@
 // out: main.min.css
 
-.albumCover {
 
+.form-group {
+  clear: both;
+}
+
+//listagem de capas na main page
+.albumThumb {
+  //
+  cursor: pointer;
+  .albumCover {
+    //
+    img {
+      width: 100%;
+    }
+
+  }
+
+  .albumViewInfo {
+    //
+    .btn {
+      display: block;
+      width: 100%;
+      text-align: center;
+    }
+
+  }
+
+}
+
+.albumBox {
+  padding: 20px 0;
+}
+
+//form de criação de novo album
+#artistImgBlocks {
+  //
+  .artistImgBlock {
+    float: left;
+    .artistImg {
+      display: block;
+      margin: 5px;
+      cursor: pointer;
+    }
+
+    span {
+      text-align: center;
+      font-weight: bold;
+      display: block;
+    }
+
+    .artistImg.active {
+      border: 2px solid red;
+    }
+  }
+}
+
+.albumTags {
+  span {
+    margin: 5px;
+  }
+}
+
+//info do album
+.songs {
+  display: block;
+  padding: 10px 0;
 }

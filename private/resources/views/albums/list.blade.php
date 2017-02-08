@@ -24,7 +24,7 @@
 
         <!-- search -->
         <div class="col-lg-12">
-          <form id="searchMyAlbums" action="#" method="get" class="sidebar-form">
+          <form id="searchMyAlbums" action="albums/search" class="sidebar-form">
             <div class="input-group">
               <input type="text" name="searchAlbums" class="form-control" placeholder="Pesquisa...">
                 <span class="input-group-btn">
@@ -40,6 +40,7 @@
           <div class="row">
             <!-- TODO foreach aos albums -->
             @foreach ($albums as $album)
+            <a href="{{ URL::to("albums/show/$album->id") }}">
               <div class="albumThumb col-lg-3 col-md-4 col-xs-12">
                   <div class="albumCover">
                     <img src="{{ $album->cover }}" alt="nome do album">
@@ -48,6 +49,7 @@
                     <a href="{{ URL::to("albums/show/$album->id") }}" class="btn btn-danger btn-flat">Ver info</a>
                   </div>
               </div>
+            </a>
             @endforeach
           </div>
         </div>

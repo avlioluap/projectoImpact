@@ -6,6 +6,7 @@
   <link href="lib/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet" type="text/css">
   <link href="lib/adminlte/plugins/iCheck/square/blue.css" rel="stylesheet">
   <link href="css/app.css" rel="stylesheet" type="text/css">
+  <link href="css/main.min.css" rel="stylesheet" type="text/css">
 @stop
 
 @section ('scripts')
