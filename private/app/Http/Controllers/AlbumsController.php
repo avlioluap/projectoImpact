@@ -48,8 +48,13 @@ class AlbumsController extends Controller {
 	 */
 	public function search()
 	{
-		dd(Input::all());
-		//return view ('albums.search');
+		$searchAlbums = Album::where('id_user', \Auth::id())
+    ->where('nome', 'ILIKE', '%' . Input::get('searchAlbums') . '%')
+		->orWhere('artista', 'ILIKE', '%' . Input::get('searchAlbums') . '%')
+		->orWhere('tag', 'ILIKE', '%' . Input::get('searchAlbums') . '%')
+		->get();
+
+		return view ('albums.search', compact('searchAlbums'));
 	}
 
 	/**

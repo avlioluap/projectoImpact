@@ -28,7 +28,7 @@
             <div class="input-group">
               <input type="text" name="searchAlbums" class="form-control" placeholder="Pesquisa...">
                 <span class="input-group-btn">
-                  <button type="submit" name="seach" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
+                  <button type="submit" name="searchBtn" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
                   </button>
                 </span>
             </div>
@@ -52,11 +52,6 @@
             </a>
             @endforeach
           </div>
-        </div>
-
-        <!-- pagination -->
-        <div class="col-lg-12">
-          pagination
         </div>
     </div>
   </div>
