@@ -163,6 +163,7 @@ return [
     'App\Providers\RouteServiceProvider',
     'App\Providers\ComposerServiceProvider',
     'Impactwave\Razorblade\RazorbladeServiceProvider',
+    'Cviebrock\LaravelElasticsearch\ServiceProvider',
 
   ], env ('APP_ENV') == 'local' ? [
     /*
@@ -217,6 +218,7 @@ return [
     'URL'       => 'Illuminate\Support\Facades\URL',
     'Validator' => 'Illuminate\Support\Facades\Validator',
     'View'      => 'Illuminate\Support\Facades\View',
+    'Elasticsearch' => 'Cviebrock\LaravelElasticsearch\Facade',
 
   ],
 

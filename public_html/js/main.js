@@ -1,4 +1,6 @@
 var api_key = '4b07c3fad8d2567ab1fa1ae07ba73319';
+var allArtistAlbums;
+var videoPlayList = "https://www.youtube.com/embed?playlist=";
 
 function errorMsg( msg ) {
   var html = '<span class="warningMsg label alert">'+ msg +'</span>';
@@ -27,6 +29,17 @@ function insertAlbumAjax ( url , dados) {
 		method: 'GET',
 		url: url,
     data: dados,
+    headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+	});
+}
+
+function searchAllAlbums( artistName ){
+  return $.ajax({
+		method: 'GET',
+		url: "lastFm/searchAllAlbums",
+    data: { artista: artistName },
     headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
     }
@@ -67,6 +80,13 @@ function searchArtist(){
         });
         //aparecer a opção para escolher o album
         $("#albumInput").fadeIn();
+        //devolver uma listagem de albums do artista
+        $('#LoadingImage').show();
+        setTimeout(function() {
+            getArtistAlbums( artistName );
+            $('#LoadingImage').hide();
+        }, 0);
+
       }
 
 		}).fail(function() {
@@ -78,15 +98,110 @@ function searchArtist(){
 
 function clickArtistImg(){
   $("#artistImgBlocks").on('click', '.artistImg', function(){
+
     $("#artista").val($(this).attr('data-name'));
+    $("#artistaProc").val($(this).attr('data-name'));
+
     $(".artistImg").removeClass("active");
     $(this).addClass('active');
+    //devolver uma listagem de albums do artista
+    $('#LoadingImage').show();
+    setTimeout(function() {
+        getArtistAlbums( $("#artista").val() );
+        $('#LoadingImage').hide();
+    }, 0);
+
+  });
+}
+
+function clickAlbumImg(){
+  $("#albumImgBlocks").on('click', '.albumImgBlock', function(){
+
+    $("#nome").val( $(this).attr('data-name') );
+
+    $(".albumImgBlock").removeClass("active");
+    $(this).addClass('active');
+
+    //devolver uma listagem de albums do artista
+    //$('#LoadingImage').show();
+
+    /*setTimeout(function() {
+        searchAlbumsObject($("#nome").val());
+        $('#LoadingImage').hide();
+    }, 0);*/
+
+    $("#cover").val( $(this).find('.albumImg').attr('src') );
+
+    $("#insertAlbum").fadeIn();
+
+  });
+}
+
+function getArtistAlbums( artistName ){
+
+  //search for the keyword typed in the input
+  searchAllAlbums( artistName ).done(function( data ) {
+    //guarda o obj
+    allArtistAlbums = data.topalbums.album;
+    //clonar block de albumImgBlock
+    searchAlbumsObject();
+
+  }).fail(function() {
+    errorMsg("Someting went wrong please try again!!!");
+  });
+}
+
+function searchAlbumsObject(searchValue="") {
+
+  var deafultBlock = $(".defaultAlbumImgBlock");
+  //clear da div
+  $("#albumImgBlocks").empty();
+
+  $.each(allArtistAlbums, function(index, val) {
+    if (searchValue != "") {
+
+      if (val.name.toLowerCase().indexOf(searchValue.toLowerCase()) >= 0){
+
+        if (val.name != "(null)" && val.image[2]['#text'] != "") {
+
+          var clonedBlock = deafultBlock.clone().toggleClass('defaultAlbumImgBlock albumImgBlock');
+
+          clonedBlock.appendTo('#albumImgBlocks');
+          //cover
+          clonedBlock.find('.albumImg').attr('src', val.image[2]['#text']);
+          //nome do album
+          clonedBlock.find('.albumName').html(val.name);
+          //data-name
+          clonedBlock.attr('data-name', val.name);
+        }
+      }
+    } else {
+      if (val.name != "(null)" && val.image[2]['#text'] != "") {
+
+        var clonedBlock = deafultBlock.clone().toggleClass('defaultAlbumImgBlock albumImgBlock');
+        clonedBlock.appendTo('#albumImgBlocks');
+        //cover
+        clonedBlock.find('.albumImg').attr('src', val.image[2]['#text']);
+        //nome do album
+        clonedBlock.find('.albumName').html(val.name);
+        //data-name
+        clonedBlock.attr('data-name', val.name);
+      }
+    }
+
   });
 }
 
 function searchAlbum(){
   $("#procAlbum").on('click', function() {
+    var albumName = $("#nome").val();
+    //procurar album na listagem com like da procura
+    searchAlbumsObject(albumName);
+    //devolver erro se nao encontrar
 
+    //ao encontrar mostrar o result
+
+    /*
       var albumName = $("#nome").val();
       var artistName = $("#artista").val();
       var urlApi = 'http://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key='+ api_key +'&artist='+ artistName +'&album='+ albumName +'&format=json';
@@ -132,6 +247,7 @@ function searchAlbum(){
       }).fail(function() {
           errorMsg("Someting went wrong please try again!!!");
       });
+      */
 
   });
 }
@@ -141,27 +257,6 @@ function insertAlbum( url, formData ){
     //dar mensagem que inseriu novo album
 
       errorMsg(data.msg);
-
-  }).fail(function() {
-      errorMsg("Someting went wrong please try again!!!");
-  });
-}
-
-function searchTracks(artistName, albumName){
-
-  searchAlbumApi(artistName, albumName).done(function(data) {
-
-    console.log(data);
-    $.each(data.album.tracks.track, function(index, val) {
-
-        html = '<a href="'+val.url+'" target="_blank" class="songs">' +
-        '<span class="glyphicon glyphicon-headphones" aria-hidden="true">' +
-        '</span> : <span class="trackList">' + val.name +'</span>' +
-        '</a>';
-
-        $("#trackList").append(html);
-
-    });
 
   }).fail(function() {
       errorMsg("Someting went wrong please try again!!!");
@@ -178,6 +273,7 @@ $(document).ready(function() {
   searchArtist();
   //click da imagem altera  o nome de pesquisa
   clickArtistImg();
+  clickAlbumImg();
   //procurar album
   searchAlbum();
 
@@ -188,11 +284,17 @@ $(document).ready(function() {
       url = $(this).attr('action');
       insertAlbum( url, formData );
     }
-		event.preventDefault();
+		//event.preventDefault();
 	});
 
   if ( $("#albumSingleContent").length ) {
-    //procurar a lista de tracks
-    searchTracks( $("#albumSingleContent").attr('data-artista'), $("#albumSingleContent").attr('data-album') );
+    //adicionar video
+    videoUrl = $("#albumSingleContent").attr('data-playlist-url');
+    html ='<iframe width="100%" height="500px"' +
+        'src="'+videoUrl+'"' +
+        'frameborder="0" allowfullscreen ></iframe>';
+
+        $("#player").html(html);
+
   }
 });

@@ -43,6 +43,7 @@
   </script>
 
   <script src='js/app.js'></script>
+  <script src='js/jqueryCor.js'></script>
   <script src='js/main.js'></script>
 @stop
 

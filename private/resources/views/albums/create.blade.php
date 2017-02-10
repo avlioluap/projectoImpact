@@ -1,6 +1,7 @@
 @extends('layout.main')
 
 @section('content')
+<div id="LoadingImage"></div>
 <div class="albumBox box box-default">
 
   <div class="container">
@@ -43,9 +44,12 @@
       </div>
 
       <!-- escolha da capa do album consoante as escolhas da api -->
-      <div class="form-group row">
-        <div id="albumImgBlocks" class="col-lg-4"></div>
+      <div id="albumImgBlocks" class="row">
+
+        <!--
+        <div id="albumImgBlock" class="col-lg-4"></div>
         <div id="ablumTags" class="albumTags" class="col-lg-8"></div>
+        -->
       </div>
 
       <!-- inserir novo album -->
@@ -53,5 +57,10 @@
 
     </form>
   </div>
+</div>
+<div class="defaultAlbumImgBlock col-lg-3" data-name="null">
+  <img src="" alt="" class="albumImg">
+  <span class="albumName"></span>
+  <span class="albumTags"></span>
 </div>
 @endsection

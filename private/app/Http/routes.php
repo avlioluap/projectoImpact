@@ -29,7 +29,7 @@ Route::group (['tag' => 'users'], function () {
 
 });
 
-// rotes para a gestao de albums
+// routes para a gestao de albums
 Route::group(['prefix' => 'albums'], function () {
   //listagem de album do user
   Route::get ('list', ['as' => 'albums.list', 'tag' => 'albums', 'uses' => 'AlbumsController@albums']);
@@ -41,6 +41,12 @@ Route::group(['prefix' => 'albums'], function () {
   Route::get('insert', ['as' => 'albums.insert', 'tag' => 'albums', 'uses' => 'AlbumsController@store']);
   //view de um album para ver dados
   Route::get('show/{id}', ['as' => 'albums.show', 'tag' => 'albums', 'uses' => 'AlbumsController@show']);
+});
+
+// routes para calls a api da lastfm
+Route::group(['prefix' => 'lastFm'], function () {
+  //listagem de album do user
+  Route::any ('searchAllAlbums', ['as' => 'lastfm.searchAllAlbums', 'tag' => 'lastFm', 'uses' => 'LastFmController@getAllAlbumsFromArtist']);
 });
 
 //Route::get ('albums.list', ['as' => 'albums', 'tag' => 'albums', 'uses' => 'AlbumsController@albums']);

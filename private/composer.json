@@ -9,7 +9,8 @@
   "type": "project",
   "require": {
     "laravel/framework": "5.0.*",
-    "impactwave/razorblade": "dev-master"
+    "impactwave/razorblade": "dev-master",
+    "cviebrock/laravel-elasticsearch": "^1.2"
   },
   "require-dev": {
     "phpunit/phpunit": "~4.0",
